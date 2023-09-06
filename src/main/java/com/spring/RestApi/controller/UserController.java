@@ -1,10 +1,16 @@
 package com.spring.RestApi.controller;
 
 import com.spring.RestApi.dto.UserDto;
+import com.spring.RestApi.exception.ErrorDetails;
+import com.spring.RestApi.exception.ResourceNotFoundException;
 import com.spring.RestApi.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/user")
@@ -21,4 +27,5 @@ public class UserController {
         UserDto fetchedUser=userService.getUserById(id);
         return ResponseEntity.ok().body(fetchedUser);
     }
+
 }
