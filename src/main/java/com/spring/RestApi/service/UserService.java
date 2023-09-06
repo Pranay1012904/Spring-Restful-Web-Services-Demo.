@@ -5,4 +5,5 @@ import com.spring.RestApi.entity.UserEntity;
 
 public interface UserService {
     public UserDto createUser(UserDto userDto);
+    public UserDto getUserById(Long id);
 }

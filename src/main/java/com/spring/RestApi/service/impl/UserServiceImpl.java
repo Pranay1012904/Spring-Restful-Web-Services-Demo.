@@ -8,6 +8,8 @@ import com.spring.RestApi.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -16,5 +18,10 @@ public class UserServiceImpl implements UserService {
         UserEntity user=UserMapper.userDtoToUser(userDto);
         UserEntity savedUser=userRepository.save(user);
         return UserMapper.userToUserDto(savedUser);
+    }
+
+    public UserDto getUserById(Long id){
+        Optional<UserEntity> fetchedUser=userRepository.findById(id);
+        return UserMapper.userToUserDto(fetchedUser.get());
     }
 }

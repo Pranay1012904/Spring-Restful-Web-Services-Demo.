@@ -1,9 +1,11 @@
 package com.spring.RestApi.entity;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="user")
+@NoArgsConstructor
 public class UserEntity {
     public UserEntity(Long id, String fName, String lName, String email) {
         this.id = id;

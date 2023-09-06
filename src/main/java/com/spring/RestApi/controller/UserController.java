@@ -4,10 +4,7 @@ import com.spring.RestApi.dto.UserDto;
 import com.spring.RestApi.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -18,5 +15,10 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
         UserDto savedUser=userService.createUser(userDto);
         return ResponseEntity.ok().body(savedUser);
+    }
+    @GetMapping("{id}")
+    public ResponseEntity<UserDto> fetchUserById(@PathVariable Long id){
+        UserDto fetchedUser=userService.getUserById(id);
+        return ResponseEntity.ok().body(fetchedUser);
     }
 }
