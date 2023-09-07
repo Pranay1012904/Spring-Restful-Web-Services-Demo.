@@ -1,5 +1,7 @@
 package com.spring.RestApi.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -12,8 +14,12 @@ public class UserDto {
     }
 
     private Long id;
+    @NotEmpty(message="User's First Name Can't be Empty/Null")
     private String firstName;
+    @NotEmpty(message="User's Last Name Can't be Empty/Null")
     private String lastName;
+    @NotEmpty(message="User's Email Can't be Empty/Null")
+    @Email(message="Invalid email provided!")
     private String email;
 
     public Long getId() {

@@ -4,6 +4,7 @@ import com.spring.RestApi.dto.UserDto;
 import com.spring.RestApi.exception.ErrorDetails;
 import com.spring.RestApi.exception.ResourceNotFoundException;
 import com.spring.RestApi.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 public class UserController {
     UserService userService;
     @PostMapping("/create")
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto){
         UserDto savedUser=userService.createUser(userDto);
         return ResponseEntity.ok().body(savedUser);
     }
